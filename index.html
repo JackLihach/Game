@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		#Imagebox{
+			float: left;
+			width: 50%;
+		}
+		#Infobox{
+			float: left;
+			width: 50%;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="Imagebox">
+		<form>
+			<button type="button" id="b1"></button>
+			<button type="button" id="b2"></button>
+			<button type="button" id="b3"></button>
+		</form>
+	</div>
+	
+	<div id="Infobox">
+		<h1 id="Name">Name:</h1>
+		<br/>
+		<h1 id="Level">Level:</h1>
+	</div>
+	
+	<script>
+		function setCookie(cname, cvalue) {
+			var d = new Date();
+			d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+			var expires = "expires="+d.toUTCString();
+			document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+		function getCookie(cname){
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+				  c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+				  return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+		var level = 0;
+		if (getCookie("userLevel") != "") {
+			level = getCookie("userLevel");
+			alert(level);
+		}
+		else{
+			setCookie("userLevel", 0);
+			alert("No cookie");
+		}
+		alert(getCookie("userLevel"));
+		
+		var buttonInfo = {
+			b1: {Name:"10 Pushups", Add:5},
+			b2: {Name:"10 Pushups", Add:5},
+			b3: {Name:"10 Pushups", Add:5}};
+		
+		var buttons = [];
+		for (i in buttonInfo){
+			var button = document.getElementById(i);
+			button.innerHTML = buttonInfo[i]["Name"];
+			buttons.push(button);
+		}
+				
+		var nameHeader = document.getElementById("Name");
+		var levelHeader = document.getElementById("Level");
+		
+		function setInfo(i){
+			var button = buttons[i];
+			var data = buttonInfo[button.id];
+			button.onclick = function(){
+				level = level + data["Add"];
+				setCookie("userLevel", level);
+				levelHeader.innerHTML = "Level: " + level;
+			}
+		}
+		
+		for(i=0; i < buttons.length; i ++){
+			setInfo(i)
+		}
+	</script>
+</body>
+
+</html>
