@@ -5,24 +5,40 @@
 	<style>
 		#Imagebox{
 			float: left;
-			width: 50%;
+			width: 100%;
 		}
 		#Infobox{
 			float: left;
-			width: 50%;
+			width: 100%;
+			background-color: rgba(0, 0, 0, .1);
+			box-shadow: 0 4px 8px 0 grey;
+		}
+		h1{
+			margin-left: 10px;
+			font-family: "Arial";
+		}
+		button{
+			font-size: 25px;
+			padding: 15px 32px;
+			margin-right: 25px;
+			margin-bottom: 10px;
+			border: none;
+			background-color: #008CBA;
+			color: white;
 		}
 	</style>
 </head>
 
 <body>
-	<div id="Imagebox">
-		<form id="mainForm"></form>
-	</div>
-	
 	<div id="Infobox">
 		<h1 id="Name">Name:</h1>
 		<br/>
 		<h1 id="Level">Level:</h1>
+	</div>
+	
+	<div id="Imagebox">
+		<br/>
+		<form id="mainForm"></form>
 	</div>
 	
 	<script>
