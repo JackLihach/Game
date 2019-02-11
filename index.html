@@ -75,6 +75,7 @@
 				
 		var nameHeader = document.getElementById("Name");
 		var levelHeader = document.getElementById("Level");
+		levelHeader.innerHTML = "Level: " + level;
 		
 		function setInfo(i){
 			var button = buttons[i];
@@ -87,7 +88,7 @@
 		}
 		
 		for(i=0; i < buttons.length; i ++){
-			setInfo(i)
+			setInfo(i);
 		}
 	</script>
 </body>
