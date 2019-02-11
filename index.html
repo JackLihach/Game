@@ -16,11 +16,7 @@
 
 <body>
 	<div id="Imagebox">
-		<form>
-			<button type="button" id="b1"></button>
-			<button type="button" id="b2"></button>
-			<button type="button" id="b3"></button>
-		</form>
+		<form id="mainForm"></form>
 	</div>
 	
 	<div id="Infobox">
@@ -54,23 +50,26 @@
 		var level = 0;
 		if (getCookie("userLevel") != "") {
 			level = getCookie("userLevel");
-			alert(level);
 		}
 		else{
 			setCookie("userLevel", 0);
-			alert("No cookie");
 		}
-		alert(getCookie("userLevel"));
 		
 		var buttonInfo = {
-			b1: {Name:"10 Pushups", Add:5},
-			b2: {Name:"10 Pushups", Add:5},
-			b3: {Name:"10 Pushups", Add:5}};
+			b1: {Name:"10 Pushups", Add:1},
+			b2: {Name:"30 Situps", Add:1},
+			b3: {Name:"Work on Game (1 Hour)", Add:5},
+			b4: {Name:"Skip", Add:-10},
+			b5: {Name:"Bridge", Add:20}};
 		
 		var buttons = [];
+		var mainForm = document.getElementById("mainForm");
 		for (i in buttonInfo){
-			var button = document.getElementById(i);
+			var button = document.createElement("BUTTON");
+			button.type = "button";
+			button.id = i;
 			button.innerHTML = buttonInfo[i]["Name"];
+			mainForm.appendChild(button);
 			buttons.push(button);
 		}
 				
